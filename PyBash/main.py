@@ -1,9 +1,5 @@
 from cmd import Cmd
-import os
-import socket
-import time
-import shutil
-import sys
+import os, socket, shutil, sys, time
 
 
 class Prompt(Cmd):
@@ -19,7 +15,7 @@ class Prompt(Cmd):
         """Exit the shell."""
 
         try:
-            raise SystemExit
+            sys.exit()
         except:
             pass
 
@@ -124,4 +120,4 @@ if __name__ == '__main__':
     name = "~/" + Prompt.user + "$ "
     prompt = Prompt()
     prompt.prompt = name
-    prompt.cmdloop('PyBash v1.2.3. Type ? for a list of commands.\n')
+    prompt.cmdloop('PyBash v1.2.9. Type ? for a list of commands.\n')
