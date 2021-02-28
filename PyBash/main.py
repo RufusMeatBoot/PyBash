@@ -118,4 +118,4 @@ if __name__ == '__main__':
     name = "~/" + Prompt.user + "$ "
     prompt = Prompt()
     prompt.prompt = name
-    prompt.cmdloop('PyBash v1.2.3. Type ? for a list of commands.\n')
+    prompt.cmdloop('PyBash v1.2.9. Type ? for a list of commands.\n')
