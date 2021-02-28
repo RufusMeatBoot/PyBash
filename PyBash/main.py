@@ -26,11 +26,10 @@ class Prompt(Cmd):
     def do_clear(self, args):
         """Clear the shell."""
 
-        if platform == "win32" or platform == "win64":
-            try:
-                os.system('cls')
-            except:
-                pass
+        try:
+            os.system('cls')
+        except:
+            pass
 
     def do_cd(self, args):
         """Change current working directory."""

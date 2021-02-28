@@ -3,6 +3,7 @@ import os
 import socket
 import time
 import platform
+import shutil
 
 
 class Prompt(Cmd):
@@ -25,16 +26,10 @@ class Prompt(Cmd):
     def do_clear(self, args):
         """Clear the shell."""
 
-        if platform == "linux" or platform == "linux2":
-            try:
-                os.system('clear')
-            except:
-                pass
-        elif platform == "win32" or platform == "win64":
-            try:
-                os.system('cls')
-            except:
-                pass
+        try:
+            os.system('cls')
+        except:
+            pass
 
     def do_cd(self, args):
         """Change current working directory."""
@@ -94,8 +89,8 @@ class Prompt(Cmd):
         """Evaluate an expression."""
 
         try:
-            out = eval(args)
-            print(out)
+            output = eval(args)
+            print(output)
         except:
             print("*** Invalid expression: " + args)
 
@@ -108,9 +103,16 @@ class Prompt(Cmd):
         except:
             pass
 
+    def do_mv(self, args):
+        """Move a file to a specified location."""
+
+        directory = args[0]
+        destination = args[1]
+        shutil.move(directory, destination)
+
 
 if __name__ == '__main__':
-    name = Prompt.user + "$ "
+    name = "~/" + Prompt.user + "$ "
     prompt = Prompt()
     prompt.prompt = name
-    prompt.cmdloop('PyBash 1.0.0. Type ? for a list of commands.\n')
+    prompt.cmdloop('PyBash v1.2.3. Type ? for a list of commands.\n')
