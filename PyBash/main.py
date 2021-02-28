@@ -1,5 +1,9 @@
 from cmd import Cmd
-import os, socket, shutil, sys, time
+import os
+import socket
+import time
+import platform
+import shutil
 
 
 class Prompt(Cmd):
@@ -15,23 +19,17 @@ class Prompt(Cmd):
         """Exit the shell."""
 
         try:
-            sys.exit()
+            raise SystemExit
         except:
             pass
 
     def do_clear(self, args):
         """Clear the shell."""
 
-        if sys.platform == "win32" or sys.platform == "win64":
-            try:
-                os.system('cls')
-            except:
-                pass
-        if sys.platform == "linux" or sys.platform == "linux2":
-            try:
-                os.system('clear')
-            except:
-                pass
+        try:
+            os.system('cls')
+        except:
+            pass
 
     def do_cd(self, args):
         """Change current working directory."""
@@ -120,4 +118,4 @@ if __name__ == '__main__':
     name = "~/" + Prompt.user + "$ "
     prompt = Prompt()
     prompt.prompt = name
-    prompt.cmdloop('PyBash v1.2.9. Type ? for a list of commands.\n')
+    prompt.cmdloop('PyBash v1.2.3. Type ? for a list of commands.\n')
