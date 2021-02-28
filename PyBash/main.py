@@ -2,8 +2,8 @@ from cmd import Cmd
 import os
 import socket
 import time
-import platform
 import shutil
+import sys
 
 
 class Prompt(Cmd):
@@ -26,10 +26,16 @@ class Prompt(Cmd):
     def do_clear(self, args):
         """Clear the shell."""
 
-        try:
-            os.system('cls')
-        except:
-            pass
+        if sys.platform == "win32" or sys.platform == "win64":
+            try:
+                os.system('cls')
+            except:
+                pass
+        if sys.platform == "linux" or sys.platform == "linux2":
+            try:
+                os.system('clear')
+            except:
+                pass
 
     def do_cd(self, args):
         """Change current working directory."""
