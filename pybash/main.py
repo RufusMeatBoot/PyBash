@@ -106,9 +106,12 @@ class Prompt(Cmd):
     def do_mv(self, args):
         """Move a file to a specified location."""
 
-        directory = args[0]
-        destination = args[1]
-        shutil.move(directory, destination)
+        try:
+            directory = args[0]
+            destination = args[1]
+            shutil.move(directory, destination)
+        except:
+            pass
 
 
 if __name__ == '__main__':
