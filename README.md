@@ -1,2 +1,2 @@
 # PyBash
-A minimalist (and possibly the simplest) Bash shell written in python.
+A simple recreation of the Bourne Again Shell (Bash).
