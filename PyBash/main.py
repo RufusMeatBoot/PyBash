@@ -1,9 +1,5 @@
 from cmd import Cmd
-import os
-import socket
-import time
-import platform
-import shutil
+import os, socket, shutil, sys, time
 
 
 class Prompt(Cmd):
@@ -19,17 +15,23 @@ class Prompt(Cmd):
         """Exit the shell."""
 
         try:
-            raise SystemExit
+            sys.exit()
         except:
             pass
 
     def do_clear(self, args):
         """Clear the shell."""
-
-        try:
-            os.system('cls')
-        except:
-            pass
+        
+        if platform == "win32" or platform == "win64":
+            try:
+                os.system('cls')
+            except:
+                pass
+        elif platform == "linux" or platform == "linux2":
+            try:
+                os.system('clear')
+            except:
+                pass
 
     def do_cd(self, args):
         """Change current working directory."""
