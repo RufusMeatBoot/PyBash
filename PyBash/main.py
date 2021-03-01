@@ -1,5 +1,9 @@
 from cmd import Cmd
-import os, socket, shutil, sys, time
+import os
+import socket
+import time
+import platform
+import shutil
 
 
 class Prompt(Cmd):
@@ -21,7 +25,7 @@ class Prompt(Cmd):
 
     def do_clear(self, args):
         """Clear the shell."""
-        
+
         if platform == "win32" or platform == "win64":
             try:
                 os.system('cls')
@@ -120,4 +124,4 @@ if __name__ == '__main__':
     name = "~/" + Prompt.user + "$ "
     prompt = Prompt()
     prompt.prompt = name
-    prompt.cmdloop('PyBash v1.2.9. Type ? for a list of commands.\n')
+    prompt.cmdloop('PyBash v1.2.3. Type ? for a list of commands.\n')
