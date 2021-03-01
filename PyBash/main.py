@@ -1,9 +1,5 @@
 from cmd import Cmd
-import os
-import socket
-import time
-import platform
-import shutil
+import os, sys, socket
 
 
 class Prompt(Cmd):
@@ -26,16 +22,10 @@ class Prompt(Cmd):
     def do_clear(self, args):
         """Clear the shell."""
 
-        if platform == "win32" or platform == "win64":
-            try:
-                os.system('cls')
-            except:
-                pass
-        elif platform == "linux" or platform == "linux2":
-            try:
-                os.system('clear')
-            except:
-                pass
+        try:
+            os.system('cls')
+        except:
+            pass
 
     def do_cd(self, args):
         """Change current working directory."""
@@ -91,37 +81,9 @@ class Prompt(Cmd):
         except:
             print("*** Unknown file or folder: " + args)
 
-    def do_eval(self, args):
-        """Evaluate an expression."""
-
-        try:
-            output = eval(args)
-            print(output)
-        except:
-            print("*** Invalid expression: " + args)
-
-    def do_date(self, args):
-        """Print the date."""
-
-        try:
-            now = time.localtime()
-            print(time.strftime("%a %b %d %H:%M:%S %Y", now))
-        except:
-            pass
-
-    def do_mv(self, args):
-        """Move a file to a specified location."""
-
-        try:
-            directory = args[0]
-            destination = args[1]
-            shutil.move(directory, destination)
-        except:
-            pass
-
 
 if __name__ == '__main__':
     name = "~/" + Prompt.user + "$ "
     prompt = Prompt()
     prompt.prompt = name
-    prompt.cmdloop('PyBash v1.2.3. Type ? for a list of commands.\n')
+    prompt.cmdloop('PyBash v1.3.1. Type ? for a list of commands.\n')
