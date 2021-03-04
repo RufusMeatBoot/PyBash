@@ -1,5 +1,5 @@
 from cmd import Cmd
-import os, sys, socket
+import os, sys, socket, shutil
 
 
 class Prompt(Cmd):
