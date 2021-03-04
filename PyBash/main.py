@@ -80,6 +80,14 @@ class Prompt(Cmd):
             os.rmdir(args)
         except:
             print("*** Unknown file or folder: " + args)
+            
+    def do_rmtree(self, args):
+        """Remove a folder and all of its contents."""
+        
+        try:
+            shutil.rmtree(args)
+        except:
+            print("*** Unknown file or folder: " + args)
 
 
 if __name__ == '__main__':
